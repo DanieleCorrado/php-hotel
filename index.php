@@ -15,6 +15,12 @@
 
 </html>
 
+<form>
+    <label for="search">Search:</label>
+    <input type="number" name="vote">
+    <input type="submit" value="SEARCH">
+</form>
+
 <?php 
 
 $hotels = [
@@ -57,62 +63,71 @@ $hotels = [
 
 ];
 
-// foreach ($hotels as $hotel) {
-
-//     echo "<h2>" . $hotel['name']. "</h2>";
-
-//      echo "<ul>";
-      
-//       echo "<li> Descrizione: " . $hotel["description"] . "</li";
-//       echo "<br />";
-
-//       if ($hotel["parking"]) {
-
-//         echo "<li> Parcheggio: Presente</li";
-//       } else {
-//         echo "<li> Parcheggio: Assente</li";
-//       }
-//       echo "<br />";
-
-//       echo "<li> Voto: " . $hotel["vote"] . "</li";
-//       echo "<br />";
-
-//       echo "<li> Distanza dal centro: " . $hotel["distance_to_center"] . " Km</li";
-//       echo "<br />";
+  if ($_GET === [] || $_GET["search"] === "") {
+    echo "<table class='table center'>";
+      echo "
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Parcheggio</th>
+            <th>Voto</th>
+            <th>Distaza dal centro</th>
+          </tr>
+        </thead>";
     
-//     echo "</ul>";
+        foreach ($hotels as $hotel) {
+          echo "
+            <tr>
+              <td>" . $hotel['name'] . "</td>
+              <td>" . $hotel['description'] . "</td>";
+              if( $hotel["parking"]) {
+                echo "<td>Presente</td>";
+              } else {
+                echo "<td>Assente</td>";
+              }
+          echo "
+              <td>" .$hotel['vote'] . "</td>
+              <td>" .$hotel['distance_to_center'] . "</td>
+            </tr>";
+        };  
 
-// }
+    echo "</table>";
 
-  echo "<table class='table center'>";
-  echo "
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Descrizione</th>
-        <th>Parcheggio</th>
-        <th>Voto</th>
-        <th>Distaza dal centro</th>
-      </tr>
-    </thead>";
+  } else {
+
+    echo "<table class='table center'>";
+    echo "
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrizione</th>
+          <th>Parcheggio</th>
+          <th>Voto</th>
+          <th>Distaza dal centro</th>
+        </tr>
+      </thead>";
   
-  foreach ($hotels as $hotel) {
-    echo "
-      <tr>
-        <td>" . $hotel['name'] . "</td>
-        <td>" . $hotel['description'] . "</td>";
-        if( $hotel["parking"]) {
-          echo "<td>Presente</td>";
-        } else {
-          echo "<td>Assente</td>";
+      foreach ($hotels as $hotel) {
+
+        if($hotel["vote"] >= $_GET["vote"]) {
+          echo "
+          <tr>
+            <td>" . $hotel['name'] . "</td>
+            <td>" . $hotel['description'] . "</td>";
+            if( $hotel["parking"]) {
+              echo "<td>Presente</td>";
+            } else {
+              echo "<td>Assente</td>";
+            }
+        echo "
+            <td>" .$hotel['vote'] . "</td>
+            <td>" .$hotel['distance_to_center'] . "</td>
+          </tr>";
         }
-    echo "
-        <td>" .$hotel['vote'] . "</td>
-        <td>" .$hotel['distance_to_center'] . "</td>
-      </tr>";
-  };
+      };  
 
-  echo "</table>";
+    echo "</table>";
 
-
+  }
 ?>
