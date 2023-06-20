@@ -1,5 +1,21 @@
-<?php 
+<!DOCTYPE html>
+<html lang ="en">
+  <head>
 
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="index.css">
+
+  </head>
+
+</html>
+
+<?php 
 
 $hotels = [
 
@@ -41,30 +57,62 @@ $hotels = [
 
 ];
 
-foreach ($hotels as $hotel) {
+// foreach ($hotels as $hotel) {
 
-    echo "<h2>" . $hotel['name']. "</h2>";
+//     echo "<h2>" . $hotel['name']. "</h2>";
 
-     echo "<ul>";
+//      echo "<ul>";
       
-      echo "<li> Descrizione: " . $hotel["description"] . "</li";
-      echo "<br />";
+//       echo "<li> Descrizione: " . $hotel["description"] . "</li";
+//       echo "<br />";
 
-      if ($hotel["parking"]) {
+//       if ($hotel["parking"]) {
 
-        echo "<li> Parcheggio: Presente</li";
-      } else {
-        echo "<li> Parcheggio: Assente</li";
-      }
-      echo "<br />";
+//         echo "<li> Parcheggio: Presente</li";
+//       } else {
+//         echo "<li> Parcheggio: Assente</li";
+//       }
+//       echo "<br />";
 
-      echo "<li> Voto: " . $hotel["vote"] . "</li";
-      echo "<br />";
+//       echo "<li> Voto: " . $hotel["vote"] . "</li";
+//       echo "<br />";
 
-      echo "<li> Distanza dal centro: " . $hotel["distance_to_center"] . " Km</li";
-      echo "<br />";
+//       echo "<li> Distanza dal centro: " . $hotel["distance_to_center"] . " Km</li";
+//       echo "<br />";
     
-    echo "</ul>";
+//     echo "</ul>";
 
-}
+// }
+
+  echo "<table class='table center'>";
+  echo "
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Parcheggio</th>
+        <th>Voto</th>
+        <th>Distaza dal centro</th>
+      </tr>
+    </thead>";
+  
+  foreach ($hotels as $hotel) {
+    echo "
+      <tr>
+        <td>" . $hotel['name'] . "</td>
+        <td>" . $hotel['description'] . "</td>";
+        if( $hotel["parking"]) {
+          echo "<td>Presente</td>";
+        } else {
+          echo "<td>Assente</td>";
+        }
+    echo "
+        <td>" .$hotel['vote'] . "</td>
+        <td>" .$hotel['distance_to_center'] . "</td>
+      </tr>";
+  };
+
+  echo "</table>";
+
+
 ?>
