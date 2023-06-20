@@ -1,5 +1,6 @@
 <?php 
 
+
 $hotels = [
 
   [
@@ -39,4 +40,31 @@ $hotels = [
   ],
 
 ];
+
+foreach ($hotels as $hotel) {
+
+    echo "<h2>" . $hotel['name']. "</h2>";
+
+     echo "<ul>";
+      
+      echo "<li> Descrizione: " . $hotel["description"] . "</li";
+      echo "<br />";
+
+      if ($hotel["parking"]) {
+
+        echo "<li> Parcheggio: Presente</li";
+      } else {
+        echo "<li> Parcheggio: Assente</li";
+      }
+      echo "<br />";
+
+      echo "<li> Voto: " . $hotel["vote"] . "</li";
+      echo "<br />";
+
+      echo "<li> Distanza dal centro: " . $hotel["distance_to_center"] . " Km</li";
+      echo "<br />";
+    
+    echo "</ul>";
+
+}
 ?>
